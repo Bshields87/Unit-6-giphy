@@ -14,7 +14,17 @@ $(document).ready(function () {
         $("#newButton").html("");
         var a = $("<button>");
 
-    
+        function createButtons() {
+            for (i = 0; i < topics.length; i++) {
+                var newButton = $("<button>");
+                newButton.attr("class", "giphy");
+                newButton.text(topics[i]);
+                newButton.attr("data-topic", topics[i]);
+                $("#newButton").append(newButton);
+            }
+        }
+        createButtons();
+
         //giphy
        
 
