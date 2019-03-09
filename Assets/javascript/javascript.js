@@ -2,9 +2,22 @@
 
 $(document).ready(function () {
     console.log("ready")
+
+    //variable array for buttons/ search topics
     var topics = ["booze", "swimming", "traveling"];
 
+    //function to create new buttons
+    function createButtons() {
+        for (i = 0; i < topics.length; i++) {
+            var newButton = $("<button>");
+            newButton.attr("class", "giphy");
+            newButton.text(topics[i]);
+            newButton.attr("data-topic", topics[i]);
+            $("#newButton").append(newButton);
+        }
+    }
 
+    //onclick that calls button function and adds  user input to array
     $("#create-new-button").on("click", function () {
 
         console.log("hit")
@@ -13,31 +26,14 @@ $(document).ready(function () {
         console.log(topics);
         $("#newButton").html("");
         var a = $("<button>");
-
-        function createButtons() {
-            for (i = 0; i < topics.length; i++) {
-                var newButton = $("<button>");
-                newButton.attr("class", "giphy");
-                newButton.text(topics[i]);
-                newButton.attr("data-topic", topics[i]);
-                $("#newButton").append(newButton);
-            }
-        }
         createButtons();
-
-        //giphy
-       
-
-        //create an aray with input data 
-        //create an onclick function that creates button for nweest index in array.
-        //send the input data to the giphy api
     })
 
-    //giphy
+    //onclick event for API GET
     $("#newButton").on("click", "button", function () {
         $("#gif").html("");
-        
-       var topic= $(this).attr("data-topic");
+
+        var topic = $(this).attr("data-topic");
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
             topic + "&api_key=Bj0reKXOEaN4IUdyNnU5ZNFUrh2Z5uRs&limit=10";
 
@@ -48,6 +44,7 @@ $(document).ready(function () {
             .then(function (response) {
                 var results = response.data;
 
+                //for loop that adds received data to an array and creates new elements to place them in dynamically
                 for (var i = 0; i < results.length; i++) {
                     if (results[i].rating !== "r" && results[i].rating !== "pg-13") {
                         var gifDiv = $("<div>");
@@ -72,7 +69,8 @@ $(document).ready(function () {
             });
 
     });
-    
+    //onclick for animate/still of individual gifs. Had to grab them by 
+    //class as well as the element and id because previous for loop was only worrking on every other gif
     $("div#gif").on("click", ".gif", function () {
         var state = $(this).attr("data-state");
         if (state === "still") {
@@ -84,6 +82,8 @@ $(document).ready(function () {
         }
     });
 
+
+    //function call to create first 3 buttons from array items before onclick event
     createButtons();
 
 
