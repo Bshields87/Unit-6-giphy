@@ -1,0 +1,33 @@
+html {
+    background-image: url(https://cdn.wimmel-napkins.com/F/1/AM/g13310940.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: rgba(184, 224, 42, 0.24);
+
+}
+
+body{
+    
+    background-color: rgba(240, 248, 255, 0);
+}
+.container{
+    margin-top: 15%;
+    font-family: 'Economica', sans-serif;
+    font-size: 24px;
+}
+#newButton{
+    align-items: center;
+}
+button, #create-new-button {
+    background-color: rgb(63, 124, 104);
+    padding: 12px 28px;
+    border-radius: 8px;
+    border-color: rgb(23, 51, 12);
+    transition-duration: 0.4s;
+    color:  rgb(23, 51, 12);
+
+}
+button:hover {
+    background-color: rgb(23, 51, 12);;
+    color: rgb(63, 124, 104);
+}

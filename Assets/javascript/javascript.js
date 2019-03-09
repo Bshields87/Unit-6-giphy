@@ -4,7 +4,7 @@ $(document).ready(function () {
     console.log("ready")
 
     //variable array for buttons/ search topics
-    var topics = ["booze", "swimming", "traveling"];
+    var topics = ["ocean", "waterfall", "meditation"];
 
     //function to create new buttons
     function createButtons() {
@@ -35,7 +35,7 @@ $(document).ready(function () {
 
         var topic = $(this).attr("data-topic");
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-            topic + "&api_key=Bj0reKXOEaN4IUdyNnU5ZNFUrh2Z5uRs&limit=10";
+            topic + "&api_key=Bj0reKXOEaN4IUdyNnU5ZNFUrh2Z5uRs&limit=4";
 
         $.ajax({
             url: queryURL,
@@ -89,3 +89,6 @@ $(document).ready(function () {
 
 
 });
+
+
+
